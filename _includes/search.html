@@ -1,5 +1,6 @@
-<div id="search">
-    <form role="search" id="searchform">
-        <input type="search" placeholder="Search"/>
-    </form>
-</div>
+{% if site.google_custom_search %}
+  <form action="/search" method="get">
+    <input type="hidden" value="{{ site.google_custom_search }}" name="cx"/>
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </form>
+{% endif %}
