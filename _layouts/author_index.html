@@ -1,42 +1,53 @@
 ---
-layout: page
-footer: false
+layout: index
 ---
+{% assign the_author = site.data.authors | where: 'id', page.author %}
+{% for author in the_author %}
+<div class="authorbox">
+    <div class="avatar">
+        {% if author.avatar %}
+            <img src="{{ site.media_folder | prepend: site.baseurl | replace: '//', '/'}}{{ author.avatar }}" alt="{{ author.id }} avatar">
+        {% else %}
+            <img src="{{ site.baseurl | replace: '//', '/' }}/{{ site.media_folder | replace: '//', '/'}}/{{ site.author_default_avatar }}" alt="avatar">
+        {% endif %}
+    </div>
+    <div class="info">
+        <h2 class="author_name">
+            {% if author.name %}
+                {{ author.name }}
+            {% else %}
+                {{ author.id }}
+            {% endif %}
+        </h2>
+        {% if author.bio%}
+            <p class="bio">{{ author.bio }}</p>
+        {% endif %}
+        {% if author.facebook or author.twitter or author.instagram or author.email %}
+            <p class="social">
+                {% if author.facebook %}
+                    <a href="{{ author.facebook }}" target="_blank" class="noline"><i class="fa fa-facebook"></i></a>
+                {% endif %}
 
-{% assign author = site.authors[site.current_author] %}
+                {% if author.twitter %}
+                    <a href="{{ author.twitter }}" target="_blank" class="noline"><i class="fa fa-twitter"></i></a>
+                {% endif %}
 
-<div id="blog-archives" class="author">
+                {% if author.instagram %}
+                    <a href="{{ author.instagram }}" target="_blank" class="noline"><i class="fa fa-instagram"></i></a>
+                {% endif %}
 
-  <h1>Posts by {{author.name}} -
-    {% if author.site %}
-    <span class="fn">
-      <a href="{{ author.site }}">Site</a>
-    </span>
-    {% endif %}
-    {% if author.github %}
-    <span class="fn">
-      <a href="https://github.com/{{ author.github }}">GitHub</a>
-    </span>
-    {% endif %}
-    {% if author.twitter %}
-    <span class="fn">
-      <a href="https://twitter.com/{{ author.twitter }}">@{{author.twitter}}</a>
-    </span>
-    {% endif %}
-</h1>
+                {% if author.email %}
+                    <a href="mailto:{{ author.email }}" class="noline"><i class="fa fa-envelope"></i></a>
+                {% endif %}
+            </p>
+        {% endif %}
+    </div>
+ </div>
+{% endfor %}
 
 {% for post in site.posts %}
-
-  {% if post.author contains site.current_author %}
-  {% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
-  {% unless year == this_year %}
-    {% assign year = this_year %}
-    <h2>{{ year }}</h2>
-  {% endunless %}
-  <article>
-    {% include archive_post.html %}
-  </article>
-
-  {% endif %}
+    {% if post.author contains page.author %}
+        {% include article_index.html %}
+    {% endif %}
 {% endfor %}
-</div>
+

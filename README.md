@@ -1,49 +1,22 @@
-[![Build Status](https://travis-ci.org/artsy/artsy.github.io.svg)](https://travis-ci.org/artsy/artsy.github.io)
+# Twister
+![twister preview](/img/twister_preview_big.jpg)
 
-The Artsy OSS page and the blog run on top of a default jekyll install. If you'd like an overview of jekyll their [website rocks](http://jekyllrb.com/).
+## Multimedia
+If we had to choose one word to describe Twister that would be it. Twister is a theme that focusses on multimedia. It contains different post types to create video posts, audio posts, image post or gallery posts with ease. We created a ton of Variables, that make customization super easy.
 
-## Setup
+This theme is powerful and it comes with a few extras.
 
-```
-  git clone git@github.com:artsy/artsy.github.io.git
-  cd artsy.github.io
-  rake bootstrap
-  rake build
-```
+## Features
+The theme comes with a grunt file, which means that working with it is super easy. We have Tasks that compile, concatenate, minify and even deploy to your site.
 
-## Running the OSS Site / Blog locally
+### Front Matter Generator
+Twister comes with a front matter generator that will make generating the front matter for each post a breeze. So you don't have to remember each and every variable name, the generator will help you with that.
 
-Running `rake serve` will _not_ generate category pages. They take a _long_ time to generate. No one wants that when working on the site.
+### Extensive Documentation
+We don't believe in delivering Code without explanation. So we wrote an extensive Documentation for Twister that goes over every single step from installing all of the dependencies to explaining how to customize, create posts and publish. We even tell you how you can host Twister with Plugins on GitHub pages.
 
-```
-  rake serve
-```
+Check the [Docs](http://twister.digitalmind.ch/documentation/) out.
 
-Categories are generated when the ENV var `PRODUCTION` = `"YES"`.
-
-## Deploying
-
-Travis CI will automatically deploy when new commits are pushed to the `source` branch, so you shouldn't need to deploy from your local computer. However, if you need to deploy locally, the `rake deploy` command is available. 
-
-## Authoring an Article
-
-TLDR
-_To generate a new post, create a new file in the `_posts` directory. Be sure to add your name as the author of the post and include a couple of categories to file the post under. Here's some sample header YAML:_
-
-```
----
-layout: post
-title: "Responsive Layouts with CSS3"
-date: 2012-01-17 11:03
-comments: true
-author: Matt McNierney
-github-url: https://www.github.com/mmcnierney14
-twitter-url: http://twitter.com/mmcnierney
-blog-url: http://mattmcnierney.wordpress.com
-categories: [Design, CSS, HTML5]
----
-```
-
-More info can be found in the [official docs](http://jekyllrb.com/docs/posts/).
-
-When you have authored an article, `git add` and `git commit` it, then push to a named branch with `git push origin [branch]`, and create a pull request to the `source` branch, it will be deployed to the site by travis when merged.
+### Feedback, Wishes, Problems
+If you run into any trouble or have a request please do so by opening up an issue on the theme's GitHub page.
+If you just want to give us a general feedback feel free to [contact us!](http://digitalmind.ch/contact/)
